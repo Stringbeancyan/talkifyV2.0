@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="https://cdn.talkjs.com/talk.js"></script>
+    <script type="module">
+        import { Talk } from "https://cdn.talkjs.com/talk.js";
+
+        Talk.ready.then(async function () {
+            const me = new Talk.User({
+                id: "sample_user_alice",
+                name: "Alice",
+                email: "alice@example.com",
+                photoUrl: "https://example.com/alice.jpg",
+                welcomeMessage: "Hey there! How can I help?"
+            });
+
+            const session = new Talk.Session({
+                appId: "tYldFdxr",  // Replace with your actual TalkJS app ID
+                me: me
+            });
+
+            const chatbox = session.createChatbox();
+            chatbox.select("sample_conversation");  // Replace with actual conversation ID
+            chatbox.mount(document.getElementById("talkjs-container"));
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #talkjs-container {
+            width: 100%;
+            max-width: 600px;
+            height: 80vh;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="talkjs-container"></div>
+</body>
+</html>

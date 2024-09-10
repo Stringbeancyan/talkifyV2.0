@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  command = "npm run build" # Optional if you're using a build tool like Webpack
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
